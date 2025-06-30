@@ -1,119 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Breast Cancer Staging</title>
   <style>
     body {
-      background-color: LavenderBlush;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f6f9;
+      color: #333;
     }
 
-    #myHeader {
-      border-style: ridge;
-      background-color: pink;
-      color: black;
-      padding: 10px;
+    header {
+      background-color: #f8c1d1;
+      padding: 20px;
       text-align: center;
+      border-bottom: 4px solid #e68ca7;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
     }
 
     .emoji {
-      font-size: 100px;
-      color: pink;
+      font-size: 2.5rem;
+      vertical-align: middle;
     }
 
-    #border {
+    main {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .form-container {
+      background-color: #ffeaf0;
+      border: 2px solid #e68ca7;
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      margin: 10px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #c2185b;
+    }
+
+    form {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
+      gap: 12px;
     }
 
-    #numberForm {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    label {
+      font-weight: 600;
     }
 
-    #numberForm label {
-      color: red;
+    input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input[type="button"] {
+      background-color: #d81b60;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="button"]:hover {
+      background-color: #ad1457;
     }
 
     #output {
-      color: green;
-      font-weight: bold;
       margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: green;
+      text-align: center;
     }
 
-    .written-section {
-      width: calc(50% - 40px);
-      height: 450px;
-      border: 2px ridge black;
-      background-color: LightSteelBlue;
-      padding: 20px;
-      box-sizing: border-box;
-      float: left;
+    .section {
+      background-color: #e3f2fd;
+      border: 2px solid #90caf9;
+      border-radius: 10px;
+      padding: 15px;
       margin: 10px;
+      width: 100%;
+      max-width: 450px;
       overflow-y: auto;
     }
 
-    @media screen and (max-width: 768px) {
-      .written-section {
-        width: 90%;
-        float: none;
-        margin: 10px auto;
+    .section h2 {
+      color: #1565c0;
+    }
+
+    .section p {
+      margin: 6px 0;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1 id="myHeader">
-    <span class="emoji">&#127895;</span> AJCC Cancer Staging for "Breast Cancer" <span class="emoji">&#127895;</span>
-  </h1>
+  <header>
+    <h1>
+      <span class="emoji">&#127895;</span> AJCC Breast Cancer Staging <span class="emoji">&#127895;</span>
+    </h1>
+  </header>
 
-  <div id="border">
-    <h2>ENTER</h2>
-    <form id="numberForm">
-      <label for="num1">T = </label>
-      <input type="number" id="num1" name="num1" required>
+  <main>
+    <div class="form-container">
+      <h2>Enter TNM Values</h2>
+      <form id="numberForm">
+        <label for="num1">T (Tumor):</label>
+        <input type="number" id="num1" name="num1" required>
 
-      <label for="num2">N = </label>
-      <input type="number" id="num2" name="num2" required>
+        <label for="num2">N (Nodes):</label>
+        <input type="number" id="num2" name="num2" required>
 
-      <label for="num3">M = </label>
-      <input type="number" id="num3" name="num3" required>
+        <label for="num3">M (Metastasis):</label>
+        <input type="number" id="num3" name="num3" required>
 
-      <input type="button" value="Submit" onclick="calculateStage()">
-    </form>
-    <p id="output">RESULT</p>
-  </div>
+        <input type="button" value="Submit" onclick="calculateStage()">
+      </form>
+      <p id="output">STAGE = ?</p>
+    </div>
 
-  <div class="written-section" id="writtenSection1">
-    <h2>Tumor (T)</h2>
-    <p>&#9999; T1: Tumor ≤20 mm in greatest dimension.</p>
-    <p>&#9999; T2: Tumor >20 mm but ≤50 mm in greatest dimension.</p>
-    <p>&#9999; T3: Tumor >50 mm in greatest dimension.</p>
-    <p>&#9999; T4: Tumor of any size with direct extension to chest wall and/or skin.</p>
-    <p>&#9999; T4A: Extension to the chest wall (excluding pectoralis muscle).</p>
-    <p>&#9999; T4B: Ulceration, macroscopic satellite nodules, or edema.</p>
-    <p>&#9999; T4C: Both T4A and T4B features present.</p>
-  </div>
+    <div class="section">
+      <h2>Tumor (T)</h2>
+      <p>&#9999; T1: Tumor ≤20 mm</p>
+      <p>&#9999; T2: Tumor >20 mm ≤50 mm</p>
+      <p>&#9999; T3: Tumor >50 mm</p>
+      <p>&#9999; T4: Any size with chest wall/skin involvement</p>
+      <p>&#9999; T4A: Chest wall (not pectoralis muscle)</p>
+      <p>&#9999; T4B: Ulceration, nodules, edema</p>
+      <p>&#9999; T4C: Both T4A and T4B</p>
+    </div>
 
-  <div class="written-section" id="writtenSection2">
-    <h2>Node (N)</h2>
-    <p>&#9999; N0: No regional lymph node metastases.</p>
-    <p>&#9999; N1: Movable ipsilateral Level I or II axillary lymph node(s).</p>
-    <p>&#9999; N2: Fixed/matted axillary nodes or internal mammary nodes.</p>
-    <p>&#9999; N3: Involvement of infraclavicular, supraclavicular, or combined nodes.</p>
+    <div class="section">
+      <h2>Node (N)</h2>
+      <p>&#9999; N0: No lymph nodes</p>
+      <p>&#9999; N1: Movable Level I/II nodes</p>
+      <p>&#9999; N2: Fixed/matted or internal mammary</p>
+      <p>&#9999; N3: Infraclavicular, supraclavicular</p>
 
-    <h2>Metastasis (M)</h2>
-    <p>&#9999; M0: No distant metastases.</p>
-    <p>&#9999; M1: Distant metastases present.</p>
-  </div>
+      <h2>Metastasis (M)</h2>
+      <p>&#9999; M0: No distant metastases</p>
+      <p>&#9999; M1: Distant metastases present</p>
+    </div>
+  </main>
 
   <script>
     function calculateStage() {
@@ -164,9 +217,9 @@
       const m = document.getElementById("num3").value;
 
       const stageKey = `${t}-${n}-${m}`;
-      const outputElement = document.getElementById("output");
+      const output = document.getElementById("output");
 
-      outputElement.textContent = stageMapping[stageKey] || "STAGE = INVALID";
+      output.textContent = stageMapping[stageKey] || "STAGE = INVALID";
     }
   </script>
 
