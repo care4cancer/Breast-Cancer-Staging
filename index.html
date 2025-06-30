@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Breast Cancer Staging</title>
   <style>
+    /* Page entry animation */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fdf6f9;
       color: #333;
+      opacity: 0;
+      animation: fadeInBody 1s ease-in forwards;
+    }
+
+    @keyframes fadeInBody {
+      to { opacity: 1; }
     }
 
     header {
@@ -45,6 +52,12 @@
       width: 100%;
       margin: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
     }
 
     .form-container h2 {
@@ -67,6 +80,12 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      border: 2px solid #d81b60;
+      outline: none;
     }
 
     input[type="button"] {
@@ -77,10 +96,11 @@
       font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
     input[type="button"]:hover {
+      transform: scale(1.05);
       background-color: #ad1457;
     }
 
@@ -98,6 +118,18 @@
       align-items: center;
       width: 100%;
       max-width: 500px;
+      animation: slideInUp 1s ease-in-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .section-box {
@@ -108,6 +140,12 @@
       margin: 10px 0;
       width: 100%;
       box-sizing: border-box;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
 
     .section-box h2 {
