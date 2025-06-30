@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Breast Cancer Staging</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f6f9;
+      background-color: #fdf6f9;
       color: #333;
     }
 
@@ -16,7 +16,7 @@
       background-color: #f8c1d1;
       padding: 20px;
       text-align: center;
-      border-bottom: 4px solid #e68ca7;
+      border-bottom: 3px solid #e68ca7;
     }
 
     header h1 {
@@ -25,25 +25,26 @@
     }
 
     .emoji {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       vertical-align: middle;
     }
 
     main {
-      padding: 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
 
     .form-container {
-      background-color: #ffeaf0;
+      background-color: #fff0f5;
       border: 2px solid #e68ca7;
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 20px;
-      width: 100%;
       max-width: 400px;
+      width: 100%;
       margin: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
     .form-container h2 {
@@ -58,7 +59,7 @@
     }
 
     label {
-      font-weight: 600;
+      font-weight: bold;
     }
 
     input[type="number"] {
@@ -86,34 +87,41 @@
     #output {
       margin-top: 10px;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: green;
       text-align: center;
     }
 
-    .section {
+    .info-sections {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .section-box {
       background-color: #e3f2fd;
       border: 2px solid #90caf9;
       border-radius: 10px;
       padding: 15px;
-      margin: 10px;
+      margin: 10px 0;
       width: 100%;
-      max-width: 450px;
-      overflow-y: auto;
+      box-sizing: border-box;
     }
 
-    .section h2 {
+    .section-box h2 {
       color: #1565c0;
+      margin-top: 0;
     }
 
-    .section p {
+    .section-box p {
       margin: 6px 0;
     }
 
     @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-        align-items: center;
+      .form-container, .section-box {
+        width: 90%;
       }
     }
   </style>
@@ -131,40 +139,60 @@
       <h2>Enter TNM Values</h2>
       <form id="numberForm">
         <label for="num1">T (Tumor):</label>
-        <input type="number" id="num1" name="num1" required>
+        <input type="number" id="num1" name="num1" min="0" max="4" required>
 
         <label for="num2">N (Nodes):</label>
-        <input type="number" id="num2" name="num2" required>
+        <input type="number" id="num2" name="num2" min="0" max="3" required>
 
         <label for="num3">M (Metastasis):</label>
-        <input type="number" id="num3" name="num3" required>
+        <input type="number" id="num3" name="num3" min="0" max="1" required>
 
         <input type="button" value="Submit" onclick="calculateStage()">
       </form>
       <p id="output">STAGE = ?</p>
     </div>
 
-    <div class="section">
-      <h2>Tumor (T)</h2>
-      <p>&#9999; T1: Tumor ≤20 mm</p>
-      <p>&#9999; T2: Tumor >20 mm ≤50 mm</p>
-      <p>&#9999; T3: Tumor >50 mm</p>
-      <p>&#9999; T4: Any size with chest wall/skin involvement</p>
-      <p>&#9999; T4A: Chest wall (not pectoralis muscle)</p>
-      <p>&#9999; T4B: Ulceration, nodules, edema</p>
-      <p>&#9999; T4C: Both T4A and T4B</p>
-    </div>
+    <div class="info-sections">
+      <div class="section-box">
+        <h2>Tumor (T)</h2>
+        <p>&#9999; T1: Tumor ≤20 mm</p>
+        <p>&#9999; T2: Tumor >20 mm and ≤50 mm</p>
+        <p>&#9999; T3: Tumor >50 mm</p>
+        <p>&#9999; T4: Any size with chest wall/skin involvement</p>
+        <p>&#9999; T4A: Chest wall (not pectoralis muscle)</p>
+        <p>&#9999; T4B: Ulceration, nodules, or edema</p>
+        <p>&#9999; T4C: Both T4A and T4B</p>
+      </div>
 
-    <div class="section">
-      <h2>Node (N)</h2>
-      <p>&#9999; N0: No lymph nodes</p>
-      <p>&#9999; N1: Movable Level I/II nodes</p>
-      <p>&#9999; N2: Fixed/matted or internal mammary</p>
-      <p>&#9999; N3: Infraclavicular, supraclavicular</p>
+      <div class="section-box">
+        <h2>Node (N)</h2>
+        <p>&#9999; N0: No lymph nodes</p>
+        <p>&#9999; N1: Movable Level I/II nodes</p>
+        <p>&#9999; N2: Fixed/matted or internal mammary nodes</p>
+        <p>&#9999; N3: Infraclavicular or supraclavicular nodes</p>
+      </div>
 
-      <h2>Metastasis (M)</h2>
-      <p>&#9999; M0: No distant metastases</p>
-      <p>&#9999; M1: Distant metastases present</p>
+      <div class="section-box">
+        <h2>Metastasis (M)</h2>
+        <p>&#9999; M0: No distant metastases</p>
+        <p>&#9999; M1: Distant metastases present</p>
+      </div>
+
+      <div class="section-box">
+        <h2>About Breast Cancer Staging</h2>
+        <p>
+          Cancer staging is a critical step in the diagnostic and treatment planning process. The AJCC (American Joint Committee on Cancer) TNM staging system is the most widely used classification, evaluating tumor size (T), lymph node involvement (N), and distant metastasis (M).
+        </p>
+        <p>
+          In breast cancer, accurate staging helps determine prognosis, guides therapy decisions (surgery, chemotherapy, radiation), and allows comparison of outcomes across clinical studies. This staging system is often applied following imaging procedures such as FDG PET-CT (Fluorodeoxyglucose Positron Emission Tomography – Computed Tomography), MRI, and ultrasound to assess the full extent of disease involvement.
+        </p>
+        <p>
+          FDG PET-CT plays a vital role in advanced breast cancer cases where distant metastasis is suspected. It provides functional imaging that complements anatomical findings, making it valuable in M staging (metastasis). The combination of clinical evaluation, imaging, biopsy, and pathological data ensures accurate TNM assignment and subsequent staging.
+        </p>
+        <p>
+          Understanding and applying the TNM system allows clinicians to offer personalized treatment strategies and monitor disease progression or recurrence over time.
+        </p>
+      </div>
     </div>
   </main>
 
