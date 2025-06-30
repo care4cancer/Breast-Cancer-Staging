@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Breast Cancer Staging</title>
   <style>
-    /* Page entry animation */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -117,7 +116,7 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      max-width: 500px;
+      max-width: 600px;
       animation: slideInUp 1s ease-in-out;
     }
 
@@ -157,8 +156,44 @@
       margin: 6px 0;
     }
 
+    .about-box {
+      background-color: #fff8e1;
+      border: 2px dashed #fbc02d;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      font-size: 1rem;
+    }
+
+    .about-box h2 {
+      color: #ff8f00;
+      margin-top: 0;
+    }
+
+    .about-box .intro {
+      font-style: italic;
+      color: #6d4c41;
+    }
+
+    .about-box ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    .about-box ul li {
+      margin-bottom: 8px;
+    }
+
+    .about-box .note {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d84315;
+    }
+
     @media (max-width: 768px) {
-      .form-container, .section-box {
+      .form-container, .section-box, .about-box {
         width: 90%;
       }
     }
@@ -216,19 +251,19 @@
         <p>&#9999; M1: Distant metastases present</p>
       </div>
 
-      <div class="section-box">
-        <h2>About Breast Cancer Staging</h2>
-        <p>
-          Cancer staging is a critical step in the diagnostic and treatment planning process. The AJCC (American Joint Committee on Cancer) TNM staging system is the most widely used classification, evaluating tumor size (T), lymph node involvement (N), and distant metastasis (M).
+      <div class="about-box">
+        <h2>📘 Understanding Breast Cancer Staging</h2>
+        <p class="intro">
+          Accurate cancer staging is essential for determining prognosis, selecting treatments, and evaluating clinical outcomes.
         </p>
-        <p>
-          In breast cancer, accurate staging helps determine prognosis, guides therapy decisions (surgery, chemotherapy, radiation), and allows comparison of outcomes across clinical studies. This staging system is often applied following imaging procedures such as FDG PET-CT (Fluorodeoxyglucose Positron Emission Tomography – Computed Tomography), MRI, and ultrasound to assess the full extent of disease involvement.
-        </p>
-        <p>
-          FDG PET-CT plays a vital role in advanced breast cancer cases where distant metastasis is suspected. It provides functional imaging that complements anatomical findings, making it valuable in M staging (metastasis). The combination of clinical evaluation, imaging, biopsy, and pathological data ensures accurate TNM assignment and subsequent staging.
-        </p>
-        <p>
-          Understanding and applying the TNM system allows clinicians to offer personalized treatment strategies and monitor disease progression or recurrence over time.
+        <ul>
+          <li><strong>TNM staging</strong> (Tumor-Node-Metastasis) is the most commonly used method globally, supported by the AJCC.</li>
+          <li><strong>Imaging tools</strong> like <em>FDG PET-CT, MRI, and Ultrasound</em> are often used before assigning stages.</li>
+          <li><strong>FDG PET-CT</strong> is especially important in detecting <em>distant metastasis (M)</em> and identifying occult spread.</li>
+          <li>TNM classification supports clinicians in making <strong>individualized treatment plans</strong> and monitoring response over time.</li>
+        </ul>
+        <p class="note">
+          Staging is not just a number—it guides life-saving decisions.
         </p>
       </div>
     </div>
