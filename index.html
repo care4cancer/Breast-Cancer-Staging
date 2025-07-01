@@ -4,99 +4,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Breast Cancer Staging</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdf6f9;
+      color: #333;
     }
 
     header {
-      background-color: #4a148c;
-      color: white;
+      background-color: #f8c1d1;
       padding: 20px;
       text-align: center;
+      border-bottom: 3px solid #e68ca7;
     }
 
-    nav {
-      background-color: #7b1fa2;
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .emoji {
+      font-size: 2.2rem;
+      vertical-align: middle;
+    }
+
+    main {
       display: flex;
-      justify-content: center;
-      padding: 10px;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
+    .about-box {
+      background-color: #fff8e1;
+      border: 2px dashed #fbc02d;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      font-size: 1rem;
+    }
+
+    .about-box h2 {
+      color: #ff8f00;
+      margin-top: 0;
+    }
+
+    .about-box ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    .about-box ul li {
+      margin-bottom: 8px;
+    }
+
+    .about-box .note {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d84315;
+    }
+
+    .form-container {
+      background-color: #fff0f5;
+      border: 2px solid #e68ca7;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+      margin: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #c2185b;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    label {
       font-weight: bold;
     }
 
-    section {
-      padding: 20px;
-    }
-
-    h2 {
-      color: #4a148c;
-    }
-
-    footer {
-      background-color: #4a148c;
-      color: white;
-      text-align: center;
+    input[type="number"] {
       padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
     }
 
-    .content {
-      max-width: 900px;
-      margin: auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    input[type="number"]:focus {
+      border: 2px solid #d81b60;
+      outline: none;
     }
 
-    ul {
-      padding-left: 20px;
+    input[type="button"] {
+      background-color: #d81b60;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
-    ul li {
-      margin-bottom: 10px;
+    input[type="button"]:hover {
+      transform: scale(1.05);
+      background-color: #ad1457;
     }
 
-    .stage-image {
-      margin: 20px 0;
+    #output {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: green;
       text-align: center;
     }
 
-    .stage-image img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    .info-sections {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
     }
 
-    .stage-caption {
-      font-style: italic;
-      color: #666;
+    .section-box {
+      background-color: #e3f2fd;
+      border: 2px solid #90caf9;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      width: 100%;
+      box-sizing: border-box;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .section-box h2 {
+      color: #1565c0;
+      margin-top: 0;
+    }
+
+    .section-box p {
+      margin: 6px 0;
+    }
+
+    @media (max-width: 768px) {
+      .form-container, .section-box, .about-box {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Breast Cancer Staging</h1>
+    <h1>
+      <span class="emoji">&#127895;</span> AJCC Breast Cancer Staging <span class="emoji">&#127895;</span>
+    </h1>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#stages">Stages</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <main>
 
-  <section id="about">
-    <div class="content">
-      <h2>📌 About Breast Cancer Staging</h2>
+    <div class="about-box">
+      <h2>📘 About Breast Cancer Staging</h2>
       <p>Breast cancer staging is a critical process used to determine how far the disease has spread. Accurate staging helps guide treatment choices and assess prognosis. One of the most advanced tools for staging is <strong>PET-CT</strong> (Positron Emission Tomography - Computed Tomography), which combines metabolic and anatomical imaging to detect cancer with high precision.</p>
 
       <h3>🧠 How PET-CT Works in Staging</h3>
@@ -107,57 +198,77 @@
         <li><strong>SUV: A Measure of Activity:</strong> <em>Standardized Uptake Value (SUV)</em> tells how much FDG a region absorbs — higher values often indicate malignancy.</li>
         <li><strong>Interpreting "Metabolic Activity":</strong> Areas with high FDG uptake (high SUV) are termed <em>metabolically active</em> and may represent tumors, lymph nodes, or metastasis. PET-CT helps detect and monitor cancer more effectively than anatomical imaging alone.</li>
       </ul>
-
-      <p><strong>⚠️ Note:</strong> While PET-CT is powerful in cancer staging, results should always be interpreted by qualified physicians. This platform is for educational and awareness purposes only.</p>
+      <p class="note">⚠️ While PET-CT is powerful in cancer staging, results should always be interpreted by qualified physicians. This platform is for educational and awareness purposes only.</p>
     </div>
-  </section>
 
-  <section id="stages">
-    <div class="content">
-      <h2>📊 Breast Cancer Stages</h2>
-      <p>The following section illustrates the different stages of breast cancer using visual representations.</p>
+    <div class="form-container">
+      <h2>Enter TNM Values</h2>
+      <form id="numberForm">
+        <label for="num1">T (Tumor):</label>
+        <input type="number" id="num1" name="num1" min="0" max="4" required>
 
-      <div class="stage-image">
-        <img src="stage-0.jpg" alt="Stage 0 - Ductal Carcinoma in Situ (DCIS)">
-        <p class="stage-caption">Stage 0 - Ductal Carcinoma in Situ (DCIS)</p>
+        <label for="num2">N (Nodes):</label>
+        <input type="number" id="num2" name="num2" min="0" max="3" required>
+
+        <label for="num3">M (Metastasis):</label>
+        <input type="number" id="num3" name="num3" min="0" max="1" required>
+
+        <input type="button" value="Submit" onclick="calculateStage()">
+      </form>
+      <p id="output">STAGE = ?</p>
+    </div>
+
+    <div class="info-sections">
+      <div class="section-box">
+        <h2>Tumor (T)</h2>
+        <p>&#9999; T1: Tumor ≤20 mm</p>
+        <p>&#9999; T2: Tumor >20 mm and ≤50 mm</p>
+        <p>&#9999; T3: Tumor >50 mm</p>
+        <p>&#9999; T4: Any size with chest wall/skin involvement</p>
+        <p>&#9999; T4A: Chest wall (not pectoralis muscle)</p>
+        <p>&#9999; T4B: Ulceration, nodules, or edema</p>
+        <p>&#9999; T4C: Both T4A and T4B</p>
       </div>
 
-      <div class="stage-image">
-        <img src="stage-1.jpg" alt="Stage I - Small invasive tumor without lymph node involvement">
-        <p class="stage-caption">Stage I - Small invasive tumor without lymph node involvement</p>
+      <div class="section-box">
+        <h2>Node (N)</h2>
+        <p>&#9999; N0: No lymph nodes</p>
+        <p>&#9999; N1: Movable Level I/II nodes</p>
+        <p>&#9999; N2: Fixed/matted or internal mammary nodes</p>
+        <p>&#9999; N3: Infraclavicular or supraclavicular nodes</p>
       </div>
 
-      <div class="stage-image">
-        <img src="stage-2.jpg" alt="Stage II - Larger tumor or spread to a few nearby lymph nodes">
-        <p class="stage-caption">Stage II - Larger tumor or spread to a few nearby lymph nodes</p>
-      </div>
-
-      <div class="stage-image">
-        <img src="stage-3.jpg" alt="Stage III - Locally advanced cancer with more lymph node involvement">
-        <p class="stage-caption">Stage III - Locally advanced cancer with more lymph node involvement</p>
-      </div>
-
-      <div class="stage-image">
-        <img src="stage-4.jpg" alt="Stage IV - Cancer has spread to distant organs (metastasis)">
-        <p class="stage-caption">Stage IV - Cancer has spread to distant organs (metastasis)</p>
+      <div class="section-box">
+        <h2>Metastasis (M)</h2>
+        <p>&#9999; M0: No distant metastases</p>
+        <p>&#9999; M1: Distant metastases present</p>
       </div>
     </div>
-  </section>
+  </main>
 
-  <section id="contact">
-    <div class="content">
-      <h2>📬 Contact</h2>
-      <p>For further information, always consult a qualified oncologist or visit official cancer research websites like:</p>
-      <ul>
-        <li><a href="https://www.cancer.gov/" target="_blank">National Cancer Institute (NCI)</a></li>
-        <li><a href="https://www.breastcancer.org/" target="_blank">BreastCancer.org</a></li>
-        <li><a href="https://www.who.int/" target="_blank">World Health Organization (WHO)</a></li>
-      </ul>
-    </div>
-  </section>
+  <script>
+    function calculateStage() {
+      const stageMapping = {
+        '1-0-0': "STAGE = IA", '0-1-0': "STAGE = IIA", '1-1-0': "STAGE = IIA", '2-0-0': "STAGE = IIA", '2-1-0': "STAGE = IIB",
+        '3-0-0': "STAGE = IIB", '0-2-0': "STAGE = IIIA", '1-2-0': "STAGE = IIIA", '2-2-0': "STAGE = IIIA", '3-1-0': "STAGE = IIIA",
+        '3-2-0': "STAGE = IIIA", '4-0-0': "STAGE = IIIB", '4-1-0': "STAGE = IIIB", '4-2-0': "STAGE = IIIB", '0-3-0': "STAGE = IIIC",
+        '1-3-0': "STAGE = IIIC", '2-3-0': "STAGE = IIIC", '3-3-0': "STAGE = IIIC", '4-3-0': "STAGE = IIIC",
+        '0-0-1': "STAGE = IV", '1-0-1': "STAGE = IV", '2-0-1': "STAGE = IV", '3-0-1': "STAGE = IV", '4-0-1': "STAGE = IV",
+        '0-1-1': "STAGE = IV", '1-1-1': "STAGE = IV", '2-1-1': "STAGE = IV", '3-1-1': "STAGE = IV", '4-1-1': "STAGE = IV",
+        '0-2-1': "STAGE = IV", '1-2-1': "STAGE = IV", '2-2-1': "STAGE = IV", '3-2-1': "STAGE = IV", '4-2-1': "STAGE = IV",
+        '0-3-1': "STAGE = IV", '1-3-1': "STAGE = IV", '2-3-1': "STAGE = IV", '3-3-1': "STAGE = IV", '4-3-1': "STAGE = IV"
+      };
 
-  <footer>
-    <p>&copy; 2025 Breast Cancer Staging. All rights reserved.</p>
-  </footer>
+      const t = document.getElementById("num1").value;
+      const n = document.getElementById("num2").value;
+      const m = document.getElementById("num3").value;
+
+      const stageKey = `${t}-${n}-${m}`;
+      const output = document.getElementById("output");
+
+      output.textContent = stageMapping[stageKey] || "STAGE = INVALID";
+    }
+  </script>
+
 </body>
 </html>
