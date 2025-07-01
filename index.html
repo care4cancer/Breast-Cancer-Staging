@@ -4,24 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Breast Cancer Staging</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fdf6f9;
+      font-family: 'Poppins', sans-serif;
+      background: #fef9fb;
       color: #333;
     }
 
     header {
-      background-color: #f8c1d1;
-      padding: 20px;
+      background: linear-gradient(90deg, #f48fb1, #ce93d8);
+      color: white;
+      padding: 30px 20px;
       text-align: center;
-      border-bottom: 3px solid #e68ca7;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
     }
 
     .emoji {
@@ -37,177 +39,166 @@
     }
 
     .about-box {
-      background-color: #fff8e1;
-      border: 2px dashed #fbc02d;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 800px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      font-size: 1rem;
+      background: #fff;
+      border-left: 5px solid #f06292;
+      padding: 25px;
+      margin: 30px auto;
+      max-width: 850px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .about-box h2 {
-      color: #ff8f00;
+      color: #d81b60;
       margin-top: 0;
     }
 
     .about-box ul {
       padding-left: 20px;
-      margin: 10px 0;
     }
 
     .about-box ul li {
-      margin-bottom: 8px;
+      margin: 10px 0;
     }
 
     .about-box .note {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #d84315;
+      margin-top: 20px;
+      color: #c62828;
+      font-weight: 600;
     }
 
     .form-container {
-      background-color: #fff0f5;
-      border: 2px solid #e68ca7;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 400px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      max-width: 450px;
       width: 100%;
-      margin: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .form-container:hover {
-      transform: scale(1.01);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      margin: 30px 0;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     }
 
     .form-container h2 {
       text-align: center;
-      color: #c2185b;
+      color: #ad1457;
+      margin-bottom: 20px;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
     }
 
     label {
-      font-weight: bold;
+      font-weight: 600;
+      margin-bottom: 5px;
     }
 
-    input[type="number"] {
-      padding: 10px;
+    input[type="number"], input[type="button"] {
+      padding: 12px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1rem;
-      transition: border 0.3s ease;
     }
 
     input[type="number"]:focus {
-      border: 2px solid #d81b60;
+      border-color: #d81b60;
       outline: none;
     }
 
     input[type="button"] {
       background-color: #d81b60;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.3s ease;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     input[type="button"]:hover {
-      transform: scale(1.05);
       background-color: #ad1457;
+      transform: scale(1.03);
     }
 
     #output {
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: green;
+      margin-top: 20px;
       text-align: center;
+      font-size: 1.5rem;
+      color: #2e7d32;
+      font-weight: 600;
     }
 
     .info-sections {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      max-width: 900px;
       width: 100%;
-      max-width: 600px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
     }
 
     .section-box {
-      background-color: #e3f2fd;
-      border: 2px solid #90caf9;
-      border-radius: 10px;
-      padding: 15px;
-      margin: 10px 0;
-      width: 100%;
-      box-sizing: border-box;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #e8f5e9;
+      border-left: 4px solid #66bb6a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
     }
 
     .section-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transform: translateY(-5px);
     }
 
     .section-box h2 {
-      color: #1565c0;
       margin-top: 0;
+      color: #2e7d32;
     }
 
-    .section-box p {
-      margin: 6px 0;
-    }
-
-    .content {
-      max-width: 800px;
-      margin: 30px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    ul {
+    .section-box ul {
       padding-left: 20px;
     }
 
-    ul li {
-      margin-bottom: 10px;
+    .section-box ul li {
+      margin-bottom: 8px;
     }
 
     footer {
-      background-color: #f8c1d1;
-      color: #333;
+      background: #f8bbd0;
       text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-      border-top: 2px solid #e68ca7;
+      padding: 12px;
+      margin-top: 50px;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .content {
+      max-width: 850px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.06);
     }
 
     @media (max-width: 768px) {
-      .form-container, .section-box, .about-box, .content {
-        width: 90%;
+      .info-sections {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        margin: 20px auto;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1> AJCC Breast Cancer Staging <span class="emoji">&#127895;</span></h1>
+    <h1>AJCC Breast Cancer Staging </h1>
   </header>
 
   <main>
+
     <div class="about-box">
       <h2>📌 About Breast Cancer Staging</h2>
       <p>Breast cancer staging is a critical process used to determine how far the disease has spread. Accurate staging helps guide treatment choices and assess prognosis. One of the most advanced tools for staging is <strong>PET-CT</strong> (Positron Emission Tomography - Computed Tomography), which combines metabolic and anatomical imaging to detect cancer with high precision.</p>
@@ -238,34 +229,39 @@
 
         <input type="button" value="Submit" onclick="calculateStage()">
       </form>
-      <p id="output">STAGE = ?</p>
+      <div id="output">STAGE = ?</div>
     </div>
 
     <div class="info-sections">
       <div class="section-box">
         <h2>Tumor (T)</h2>
-        <p>&#9999; T1: Tumor ≤20 mm</p>
-        <p>&#9999; T2: Tumor >20 mm and ≤50 mm</p>
-        <p>&#9999; T3: Tumor >50 mm</p>
-        <p>&#9999; T4: Any size with chest wall/skin involvement</p>
-        <p>&#9999; T4A: Chest wall (not pectoralis muscle)</p>
-        <p>&#9999; T4B: Ulceration, nodules, or edema</p>
-        <p>&#9999; T4C: Both T4A and T4B</p>
+        <ul>
+          <li><strong>T1:</strong> Tumor ≤ 20 mm</li>
+          <li><strong>T2:</strong> Tumor > 20 mm and ≤ 50 mm</li>
+          <li><strong>T3:</strong> Tumor > 50 mm</li>
+          <li><strong>T4:</strong> Tumor of any size with direct extension to chest wall and/or skin</li>
+          <li><strong>T4A:</strong> Extension to chest wall (not including pectoralis muscle)</li>
+          <li><strong>T4B:</strong> Ulceration, nodules, or edema of the skin (including peau d’orange)</li>
+          <li><strong>T4C:</strong> Both T4A and T4B</li>
+        </ul>
       </div>
 
       <div class="section-box">
         <h2>Node (N)</h2>
-        <p>&#9999; N0: No lymph nodes</p>
-        <p>&#9999; N1: Movable Level I/II nodes</p>
-        <p>&#9999; N2: Fixed/matted or internal mammary nodes</p>
-        <p>&#9999; N3: Infraclavicular or supraclavicular nodes</p>
+        <ul>
+          <li><strong>N0:</strong> No regional lymph node metastases</li>
+          <li><strong>N1:</strong> Movable ipsilateral level I/II axillary lymph nodes</li>
+          <li><strong>N2:</strong> Fixed/matted level I/II axillary nodes or internal mammary nodes</li>
+          <li><strong>N3:</strong> Infraclavicular or supraclavicular nodes, or combined axillary/internal mammary</li>
+        </ul>
       </div>
 
       <div class="section-box">
         <h2>Metastasis (M)</h2>
-        <p>&#9999; M0: No distant metastases</p>
-        <p>&#9999; M1: Distant metastases present </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bone,Liver,Lung,Brain,etc) </p>
+        <ul>
+          <li><strong>M0:</strong> No distant metastases</li>
+          <li><strong>M1:</strong> Distant metastases present (Bone, Liver, Lung, Brain, etc)</li>
+        </ul>
       </div>
     </div>
 
@@ -289,55 +285,23 @@
   <script>
     function calculateStage() {
       const stageMapping = {
-        '1-0-0': "STAGE = IA",
-        '0-1-0': "STAGE = IIA",
-        '1-1-0': "STAGE = IIA",
-        '2-0-0': "STAGE = IIA",
-        '2-1-0': "STAGE = IIB",
-        '3-0-0': "STAGE = IIB",
-        '0-2-0': "STAGE = IIIA",
-        '1-2-0': "STAGE = IIIA",
-        '2-2-0': "STAGE = IIIA",
-        '3-1-0': "STAGE = IIIA",
-        '3-2-0': "STAGE = IIIA",
-        '4-0-0': "STAGE = IIIB",
-        '4-1-0': "STAGE = IIIB",
-        '4-2-0': "STAGE = IIIB",
-        '0-3-0': "STAGE = IIIC",
-        '1-3-0': "STAGE = IIIC",
-        '2-3-0': "STAGE = IIIC",
-        '3-3-0': "STAGE = IIIC",
-        '4-3-0': "STAGE = IIIC",
-        '0-0-1': "STAGE = IV",
-        '1-0-1': "STAGE = IV",
-        '2-0-1': "STAGE = IV",
-        '3-0-1': "STAGE = IV",
-        '4-0-1': "STAGE = IV",
-        '0-1-1': "STAGE = IV",
-        '1-1-1': "STAGE = IV",
-        '2-1-1': "STAGE = IV",
-        '3-1-1': "STAGE = IV",
-        '4-1-1': "STAGE = IV",
-        '0-2-1': "STAGE = IV",
-        '1-2-1': "STAGE = IV",
-        '2-2-1': "STAGE = IV",
-        '3-2-1': "STAGE = IV",
-        '4-2-1': "STAGE = IV",
-        '0-3-1': "STAGE = IV",
-        '1-3-1': "STAGE = IV",
-        '2-3-1': "STAGE = IV",
-        '3-3-1': "STAGE = IV",
-        '4-3-1': "STAGE = IV"
+        '1-0-0': "STAGE = IA", '0-1-0': "STAGE = IIA", '1-1-0': "STAGE = IIA",
+        '2-0-0': "STAGE = IIA", '2-1-0': "STAGE = IIB", '3-0-0': "STAGE = IIB",
+        '0-2-0': "STAGE = IIIA", '1-2-0': "STAGE = IIIA", '2-2-0': "STAGE = IIIA",
+        '3-1-0': "STAGE = IIIA", '3-2-0': "STAGE = IIIA", '4-0-0': "STAGE = IIIB",
+        '4-1-0': "STAGE = IIIB", '4-2-0': "STAGE = IIIB", '0-3-0': "STAGE = IIIC",
+        '1-3-0': "STAGE = IIIC", '2-3-0': "STAGE = IIIC", '3-3-0': "STAGE = IIIC",
+        '4-3-0': "STAGE = IIIC"
       };
 
       const t = document.getElementById("num1").value;
       const n = document.getElementById("num2").value;
       const m = document.getElementById("num3").value;
 
-      const stageKey = `${t}-${n}-${m}`;
-      const output = document.getElementById("output");
+      const key = `${t}-${n}-${m}`;
+      const result = (m === "1") ? "STAGE = IV" : (stageMapping[key] || "STAGE = INVALID");
 
-      output.textContent = stageMapping[stageKey] || "STAGE = INVALID";
+      document.getElementById("output").textContent = result;
     }
   </script>
 </body>
